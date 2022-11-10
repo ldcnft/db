@@ -1,0 +1,18 @@
+{
+  "CONTRACT_ADDRESS": "0xa08A2B4DD744B2F37E7035743Fdab79CBa5B7146",
+  "SCAN_LINK": "https://polygonscan.com/address/0xa08A2B4DD744B2F37E7035743Fdab79CBa5B7146",
+  "NETWORK": {
+    "NAME": "Polygon",
+    "SYMBOL": "Matic",
+    "ID": 137
+  },
+  "NFT_NAME": "Duck Business",
+  "SYMBOL": "db",
+  "MAX_SUPPLY": 5000,
+  "WEI_COST": 500000000000000000,
+  "DISPLAY_COST": "0.5",
+  "GAS_LIMIT": 285000,
+  "MARKETPLACE": "Opeansea",
+  "MARKETPLACE_LINK": "https://opensea.io/collection/duck-business",
+  "SHOW_BACKGROUND": true
+}
