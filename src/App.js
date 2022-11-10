@@ -172,6 +172,21 @@ function App() {
 
     setMintAmount(newMintAmount);
   };
+  
+    const tenMintAmount = () => {
+    let newMintAmount = 10;
+    setMintAmount(newMintAmount);
+  };
+  
+      const twentyfiveMintAmount = () => {
+    let newMintAmount = 25;
+    setMintAmount(newMintAmount);
+  };
+  
+      const fiftyMintAmount = () => {
+    let newMintAmount = 50;
+    setMintAmount(newMintAmount);
+  };
 
   
   const getData = () => {
@@ -375,15 +390,52 @@ function App() {
                       </StyledRoundButton>
                     </s.Container>
                     <s.SpacerMedium />
-                        
-<s.Container ai={"center"} jc={"center"} fd={"row"}>
-<s.TextDescription
-                  style={{ textAlign: "center", color: "var(--accent-text)" }}
-                >
-                  Free   Max   Per   Txn: 3
-                </s.TextDescription>
-<s.SpacerSmall />
+                  
+                    <s.Container ai={"center"} jc={"center"} fd={"row"}>
+
+  
+  
+  
+                        <StyledRoundButton
+                        disabled={claimingNft ? 1 : 0}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          tenMintAmount();
+                          getData();
+                        }}
+                      >
+                        10
+                      </StyledRoundButton>
+<s.SpacerMedium />
+                      <StyledRoundButton
+                        disabled={claimingNft ? 1 : 0}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          twentyfiveMintAmount();
+                          getData();
+                        }}
+                      >
+                        25
+                      </StyledRoundButton>
+<s.SpacerMedium />
+                      <StyledRoundButton
+                        disabled={claimingNft ? 1 : 0}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          fiftyMintAmount();
+                          getData();
+                        }}
+                      >
+                        Max
+                      </StyledRoundButton>
+  
+  
+  
+  
+  
                     </s.Container>
+                        
+                        
                     <s.SpacerSmall />
                     <s.Container ai={"center"} jc={"center"} fd={"row"}>
                       <StyledButton
