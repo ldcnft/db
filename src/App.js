@@ -397,6 +397,7 @@ function App() {
   
   
                         <StyledRoundButton
+style={{background: "none" }}
                         disabled={claimingNft ? 1 : 0}
                         onClick={(e) => {
                           e.preventDefault();
@@ -408,6 +409,7 @@ function App() {
                       </StyledRoundButton>
 <s.SpacerMedium />
                       <StyledRoundButton
+style={{background: "none" }}
                         disabled={claimingNft ? 1 : 0}
                         onClick={(e) => {
                           e.preventDefault();
@@ -419,6 +421,7 @@ function App() {
                       </StyledRoundButton>
 <s.SpacerMedium />
                       <StyledRoundButton
+style={{background: "none" }}
                         disabled={claimingNft ? 1 : 0}
                         onClick={(e) => {
                           e.preventDefault();
