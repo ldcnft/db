@@ -9,7 +9,7 @@
   "NFT_NAME": "Duck Business",
   "SYMBOL": "db",
   "MAX_SUPPLY": 5000,
-  "WEI_COST": ,
+  "WEI_COST": 0,
   "DISPLAY_COST": "0",
   "GAS_LIMIT": 285000,
   "MARKETPLACE": "Opeansea",
