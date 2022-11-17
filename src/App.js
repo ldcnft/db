@@ -4,6 +4,7 @@ import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
+import store from "../src/redux/store";
 
 const truncate = (input, len) =>
   input.length > len ? `${input.substring(0, len)}...` : input;
@@ -96,6 +97,52 @@ function App() {
   const [claimingNft, setClaimingNft] = useState(false);
   const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
   const [mintAmount, setMintAmount] = useState(1);
+  const fetchDataRequest = () => {
+    return {
+      type: "CHECK_DATA_REQUEST",
+    };
+  };
+  
+  const fetchDataSuccess = (payload) => {
+    return {
+      type: "CHECK_DATA_SUCCESS",
+      payload: payload,
+    };
+  };
+  
+  const fetchDataFailed = (payload) => {
+    return {
+      type: "CHECK_DATA_FAILED",
+      payload: payload,
+    };
+  };
+  
+  const fetchData = () => {
+    
+    return async (dispatch) => {
+      dispatch(fetchDataRequest());
+      try {
+        let totalSupply = await store
+          .getState()
+          .blockchain.smartContract.methods.totalSupply()
+          .call();
+          let balanceOf = await store
+          .getState()
+          .blockchain.smartContract.methods.balanceOf(blockchain.account)
+          .call()
+        dispatch(
+          fetchDataSuccess({
+            totalSupply,
+            balanceOf,
+            // cost,
+          })
+        );
+      } catch (err) {
+        console.log(err);
+        dispatch(fetchDataFailed("Could not load data from contract."));
+      }
+    };
+  };
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
     SCAN_LINK: "",
@@ -115,7 +162,16 @@ function App() {
     SHOW_BACKGROUND: false,
   });
 
-  const claimNFTs = () => {
+const checkNFTs = () => {
+
+  
+  console.log("balance is:" , data.balanceOf);
+
+  if (data.balanceOf >= 2) {
+        setFeedback("Sorry, You have reached maxmum free amount.");
+        setClaimingNft(false)
+  }
+  else{
     let cost = CONFIG.WEI_COST;
     let gasLimit = CONFIG.GAS_LIMIT;
     let totalCostWei = String(cost * mintAmount);
@@ -127,10 +183,12 @@ function App() {
     blockchain.smartContract.methods
       .mint(blockchain.account, mintAmount)
       .send({
+        gasLimit: String(totalGasLimit),
         to: CONFIG.CONTRACT_ADDRESS,
         from: blockchain.account,
         value: totalCostWei,
       })
+  
       .once("error", (err) => {
         console.log(err);
         setFeedback("Sorry, something went wrong please try again later.");
@@ -144,7 +202,7 @@ function App() {
         setClaimingNft(false);
         dispatch(fetchData(blockchain.account));
       });
-  };
+  }
 
   const decrementMintAmount = () => {
     let newMintAmount = mintAmount - 1;
@@ -445,7 +503,7 @@ style={{background: "none" }}
                         disabled={claimingNft ? 1 : 0}
                         onClick={(e) => {
                           e.preventDefault();
-                          claimNFTs();
+                          checkNFTs();
                           getData();
                         }}
                       >
