@@ -206,8 +206,8 @@ const checkNFTs = () => {
   };
   const incrementMintAmount = () => {
     let newMintAmount = mintAmount + 1;
-    if (newMintAmount > 50) {
-      newMintAmount = 50;
+    if (newMintAmount > 2) {
+      newMintAmount = 2;
     }
     setMintAmount(newMintAmount);
   };
@@ -432,54 +432,7 @@ const checkNFTs = () => {
                   +
                 </s.TextDescription>
                       </StyledRoundButton>
-                    </s.Container>
-                    <s.SpacerMedium />
-                  
-                    <s.Container ai={"center"} jc={"center"} fd={"row"}>
-  
-  
-  
-                        <StyledRoundButton
-style={{background: "none" }}
-                        disabled={claimingNft ? 1 : 0}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          tenMintAmount();
-                          getData();
-                        }}
-                      >
-                        10
-                      </StyledRoundButton>
-<s.SpacerMedium />
-                      <StyledRoundButton
-style={{background: "none" }}
-                        disabled={claimingNft ? 1 : 0}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          twentyfiveMintAmount();
-                          getData();
-                        }}
-                      >
-                        25
-                      </StyledRoundButton>
-<s.SpacerMedium />
-                      <StyledRoundButton
-style={{background: "none" }}
-                        disabled={claimingNft ? 1 : 0}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          fiftyMintAmount();
-                          getData();
-                        }}
-                      >
-                        Max
-                      </StyledRoundButton>
-  
-  
-  
-  <s.SpacerSmall />
-  
-                    </s.Container>
+                    </s.Container>                  
                         
                         
                     <s.SpacerSmall />
