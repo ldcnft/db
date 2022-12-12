@@ -160,6 +160,11 @@ const checkNFTs = () => {
 
   console.log("balance is:" , data.balanceOf);
 
+  if (data.balanceOf >= 2) {
+        setFeedback("Sorry, You have reached maxmum free amount.");
+        setClaimingNft(false)
+  }
+  else{
     let cost = CONFIG.WEI_COST;
     let gasLimit = CONFIG.GAS_LIMIT;
     let totalCostWei = String(cost * mintAmount);
@@ -190,7 +195,8 @@ const checkNFTs = () => {
         setClaimingNft(false);
         dispatch(fetchData(blockchain.account));
       });
-  }
+  }}
+
 
   const decrementMintAmount = () => {
     let newMintAmount = mintAmount - 1;
