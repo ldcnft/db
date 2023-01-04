@@ -452,24 +452,14 @@ const checkNFTs = () => {
                         disabled={claimingNft ? 1 : 0}
                         onClick={(e) => {
                           e.preventDefault();
-                          twentyMintAmount();
+                          twentyfiveMintAmount();
                           getData();
                         }}
                       >
-                        20
+                        25
                       </StyledRoundButton>
 <s.SpacerMedium />
-                      <StyledRoundButton
-                        disabled={claimingNft ? 1 : 0}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          thirtyMintAmount();
-                          getData();
-                        }}
-                      >
-                        30
-                      </StyledRoundButton>
-<s.SpacerMedium />
+
                       <StyledRoundButton
                         disabled={claimingNft ? 1 : 0}
                         onClick={(e) => {
